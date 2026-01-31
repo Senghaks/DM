@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mathematic</title>
+    <link rel="stylesheet" href="Style.css" />
+  </head>
+  <body>
+    <div class="title">
+      <div class="picture">
+        <img src="rupp (1).png" />
+      </div>
+      <h2>ENCRYPTION AND DECRYPTION DEMO</h2>
+      <p>submitted to</p>
+      <h2>Mr. LIM Seyha</h2>
+      <p class="cen">
+        Mathematic Lecturer, Royal University of Phnom Penh, Phnom Penh
+      </p>
+      <h4>January 11, 2026</h4>
+      <p>by</p>
+      <div class="name">
+        <p>Ms. Sin Sokuntheary</p>
+        <p>Ms. Vann Sansana</p>
+        <p>Ms. Leang Munineath</p>
+        <p>Ms. Peanh sothyda</p>
+        <p>Ms. Hen July</p>
+        <p>Mr. Nang Senghak</p>
+        <p>Mr. Eourn Mengly</p>
+        <p>Mr. Phat Roza</p>
+      </div>
+      <p class="duc">
+        This demonstration presents applications of number theory, including
+        classical encryption-decryption methods and the RSA algorithm. In this
+        report, I will describe the algorithm I developed and the work I have
+        conducted.
+      </p>
+    </div>
+
+    <!----111111--->
+    <div class="title1">
+      <h1 class="I"><u>I. Classical Cryptography</u></h1>
+      <h2 class="I"><u>1.1 Caesar Cipher</u></h2>
+      <div class="flex-container">
+        <div class="para">
+          <p>
+            Caesar Cipher is one of the oldest and simplest encryption
+            techniques, invented by Julius Caesar. It is a type of substitution
+            cipher where each letter in the plaintext is shifted by a fixed
+            number of positions, called the key, down the alphabet. For example,
+            with a key of 3, the letter A becomes D, B becomes E, and Z wraps
+            around to C. Encryption and decryption are done using simple
+            mathematical formulas based on the shift, making it easy to
+            understand and implement. Although it is not secure by modern
+            standards, the Caesar Cipher is a fundamental example in
+            cryptography for illustrating basic encryption concepts.
+          </p>
+        </div>
+        <div class="pic0">
+          <img src="photo_2026-01-17_16-10-30.jpg" alt="" />
+        </div>
+      </div>
+      <div class="pic">
+        <img src="photo_2026-01-17_16-06-47.jpg" />
+      </div>
+      <div class="example">
+        <pre>
+Example: Caesar Cipher
+
+Plaintext: HELLO
+
+Key (Shift): 3
+
+Encryption:
+
+H → K  E → H  L → O  L → O  O → R
+
+Ciphertext: KHOOR
+
+Decryption:
+
+K → H  H → E  O → L  O → L  R → O
+
+Original Text: HELLO</pre
+        >
+      </div>
+      <div class="demo">
+        <h2><u>Caesar Cipher Demo</u></h2>
+        <div class="line"></div>
+      </div>
+      <div class="box1">
+        <h3 class="massage">Enter Plain text or Cipher text</h3>
+        <input
+          class="text1"
+          id="massage1"
+          type=" text"
+          placeholder="Ex: HELLO ASSIGNMENT"
+        />
+      </div>
+      <div class="btt">
+        <button class="Encrypt1" onclick="Encrypt1()">Encrypt</button>
+        <button class="Decrypt1" onclick="Decrypt1()">Decrypt</button>
+      </div>
+      <div class="output">
+        <h5>
+          <u>Result: </u>
+        </h5>
+        <p id="result1">No result</p>
+      </div>
+    </div>
+    <script>
+      function Encrypt1() {
+        let text = document.getElementById("massage1").value.toUpperCase();
+        //let text = input.value.toUpperCase();
+        let Shift = 3;
+        let result1 = "";
+
+        for (let i = 0; i < text.length; i++) {
+          let char = text[i];
+          if (char >= "A" && char <= "Z") {
+            let code = text.charCodeAt(i);
+            let newcode = ((code - 65 + Shift) % 26) + 65;
+            result1 += String.fromCharCode(newcode);
+          } else {
+            result1 += char;
+          }
+        }
+        //input.value = result1;
+        document.getElementById("result1").innerText = result1;
+      }
+      function Decrypt1() {
+        let text = document.getElementById("massage1").value.toUpperCase();
+        let result1 = "";
+        let Shift = 3;
+
+        for (let i = 0; i < text.length; i++) {
+          let char = text[i];
+          if (char >= "A" && char <= "Z") {
+            let code = text.charCodeAt(i);
+            let newcode = ((code - 65 - Shift + 26) % 26) + 65;
+            result1 += String.fromCharCode(newcode);
+          } else {
+            result1 += char;
+          }
+        }
+        document.getElementById("result1").innerText = result1;
+      }
+    </script>
+
+    <div class="title2">
+      <!----222222--->
+      <h2 class="I1"><u>1.2 General Shift Cipher</u></h2>
+      <div class="flex-container1">
+        <div class="para1">
+          <p>
+            General Shift Cipher is an extension of the Caesar Cipher in which
+            each letter of the plaintext is shifted by a user-defined number of
+            positions, called the key. Instead of using a fixed shift of 3, this
+            method allows any integer shift value, making it more flexible than
+            the classical Caesar Cipher. The encryption is performed by shifting
+            letters forward in the alphabet, while decryption shifts them
+            backward using the same key. Although it is still vulnerable to
+            brute-force attacks due to the limited number of possible keys, the
+            General Shift Cipher is useful for demonstrating the concept of
+            symmetric encryption and key-based security in classical
+            cryptography.
+          </p>
+        </div>
+        <div class="demo1">
+          <h2><u>General Shift Demo</u></h2>
+          <div class="line1"></div>
+        </div>
+      </div>
+      <div class="box">
+        <h3 class="massage">Enter Plain text or Cipher text</h3>
+        <input
+          class="text"
+          id="massage"
+          type=" text"
+          placeholder="Ex: HELLO ASSIGNMENT"
+        />
+        <h3 class="key">Shift</h3>
+        <input class="number" id="key" type="number" placeholder="NUMBER" />
+      </div>
+      <div class="btt1">
+        <button class="Encrypt" onclick="Encrypt()">Encrypt</button>
+        <button class="Decrypt" onclick="Decrypt()">Decrypt</button>
+        <button class="brute" onclick="brute()">Brute Force Caeser</button>
+      </div>
+      <div class="center">
+        <h5><u>Result :</u></h5>
+        <p id="result">No result</p>
+      </div>
+    </div>
+
+    <script>
+      function Encrypt() {
+        let text = document.getElementById("massage").value.toUpperCase();
+        let key = parseInt(document.getElementById("key").value);
+        let result = "";
+
+        if (text.trim() === "") {
+          document.getElementById("result").innerText = "No result";
+          return;
+        }
+
+        for (let i = 0; i < text.length; i++) {
+          let char = text[i];
+          if (char >= "A" && char <= "Z") {
+            let code = text.charCodeAt(i);
+            let newcode = ((code - 65 + key + 26) % 26) + 65;
+            result += String.fromCharCode(newcode);
+          } else {
+            result += char;
+          }
+        }
+
+        //document.getElementById("massage").value = result;
+        document.getElementById("result").innerText = result;
+      }
+      function Decrypt() {
+        let text = document.getElementById("massage").value.toUpperCase();
+        let key = parseInt(document.getElementById("key").value);
+        let result = "";
+
+        for (let i = 0; i < text.length; i++) {
+          let char = text[i];
+
+          if (char >= "A" && char <= "Z") {
+            let code = text.charCodeAt(i);
+            let newcode = ((code - 65 - key + 26) % 26) + 65;
+            result += String.fromCharCode(newcode);
+          } else {
+            result += char;
+          }
+        }
+        //document.getElementById("massage").value = result;
+        document.getElementById("result").innerText = result;
+      }
+      function brute() {
+        let text = document.getElementById("massage").value.toUpperCase();
+        let output = "";
+
+        for (let k = 1; k < 26; k++) {
+          let result = "";
+
+          for (let i = 0; i < text.length; i++) {
+            let char = text[i];
+            if (char >= "A" && char <= "Z") {
+              let code = text.charCodeAt(i);
+              let newcode = ((code - 65 - k + 26) % 26) + 65;
+              result += String.fromCharCode(newcode);
+            } else {
+              result += char;
+            }
+          }
+          output += `k=${k}: ${result}\n`;
+        }
+        document.getElementById("result").innerText = output;
+      }
+    </script>
+
+    <!--333333-->
+    <div class="title3">
+      <div class="flex-contain3"></div>
+      <h1 class="I3"><u>II. RSA Cryptography</u></h1>
+      <div class="para3">
+        <p>
+          RSA (Rivest–Shamir–Adleman) is a widely used public-key (asymmetric)
+          cryptographic algorithm used for secure data transmission, digital
+          signatures, and key exchange.
+        </p>
+      </div>
+      <div class="ba">
+        <p>
+          <u><b>Basic Idea</b></u>
+        </p>
+        <p class="ba1">RSA uses two keys:</p>
+      </div>
+      <div class="two">
+        <p>
+          -Public key → used for encryption (shared with everyone).
+          <br />
+          -Private key → used for decryption (kept secret) Security relies on
+          the fact that factoring large composite numbers is computationally
+          hard.
+        </p>
+      </div>
+      <div class="example3">
+        <pre><u>Example: RSA Ciphertext</u>
+          
+    1.Choose Prime number:
+
+p = 3
+ q = 11
+ 
+ 2.Calculate
+ 
+ n = p x q = 3 x 11 = 33
+ 
+ 𝜙(n) = (3 - 1)(11 - 1) = 2 x 10 = 20
+ 
+ 3.Choose e:
+ 
+ e = 3 (---> Do not similat 𝜙(n) <--- )
+ 
+ 4.Find (d):
+ 
+ 3 x d = 1 (mod 20)
+ 
+ -> d = 7
+ 
+ 5.Key:
+ 
+ -> Public:  (3,33)
+ -> Private: (7,33)
+ 
+</pre>
+      </div>
+      <div class="demo3">
+        <h2><u>RSA Keygen Demo</u></h2>
+        <div class="line3"></div>
+      </div>
+      <div class="box3">
+        <h3 class="massage3">Enter Prime number p:</h3>
+        <input class="number3" id="p" type="number" placeholder="Ex: 13" />
+        <h3 class="massage3">Enter Prime number q:</h3>
+        <input class="number3" id="q" type="number" placeholder="Ex: 11" />
+        <h3 class="massage3">Input e (optional, default = 65537):</h3>
+        <input
+          class="number3"
+          type="number"
+          id="e"
+          placeholder="Ex: 3,5,7 ,9.... and 65537"
+        />
+      </div>
+      <div class="btt3">
+        <button class="Generate" onclick="generateRSA()">Generate RSA</button>
+      </div>
+      <div class="center">
+        <h5><u>Result :</u></h5>
+        <p id="publicKey">No result</p>
+        <p id="privateKey">No result</p>
+      </div>
+
+      <!--+++++++++++++++++++++++++++++++++++++++++++++++++-->
+
+      <div class="demo4">
+        <h2><u>RSA Encryption Demo</u></h2>
+        <div class="line3"></div>
+      </div>
+      <div class="box3">
+        <h3 class="massage3">Enter Plain text or Cipher text</h3>
+        <input
+          class="number3"
+          id="rsa_text_input"
+          type="text"
+          placeholder="Ex: HELLO"
+        />
+        <h3 class="massage3">Enter Prime number p:</h3>
+        <input
+          class="number3"
+          id="rsa_p_enc"
+          type="number"
+          placeholder="Ex: 11"
+        />
+        <h3 class="massage3">Enter Prime number q:</h3>
+        <input
+          class="number3"
+          id="rsa_q_enc"
+          type="number"
+          placeholder="Ex: 17"
+        />
+        <h3>Input e (optional, default = 65537):</h3>
+        <input
+          class="number3"
+          type="number"
+          id="rsa_e_enc"
+          placeholder="Ex: 7 , 9.... and 65537"
+        />
+      </div>
+      <div class="btt4">
+        <button class="Generate1" onclick="encryptRSADemo()">
+          Encryption RSA
+        </button>
+      </div>
+      <div class="center">
+        <h5><u>Result :</u></h5>
+        <p id="rsa_encrypt_result">No result</p>
+      </div>
+
+      <!--++++++++++++++++++++++++++++++++++++++++++++++++++++-->
+      <div class="demo4">
+        <h2><u>RSA Decryption Demo</u></h2>
+        <div class="line3"></div>
+      </div>
+      <div class="box3">
+        <h3 class="massage3">Enter Plain text or Cipher text</h3>
+        <input
+          class="number3"
+          id="rsa_cipher_input"
+          type="text"
+          placeholder="Ex: 182 115 88 88 108"
+        />
+        <h3 class="massage3">Enter PrivateKey d:</h3>
+        <input
+          class="number3"
+          id="rsa_d_dec"
+          type="number"
+          placeholder="Ex: 23"
+        />
+        <h3 class="massage3">Enter n:</h3>
+        <input
+          class="number3"
+          id="rsa_n_dec"
+          type="number"
+          placeholder="Ex: 187"
+        />
+      </div>
+      <div class="btt4">
+        <button class="Generate1" onclick="decryptRSADemo()">
+          Descryption RSA
+        </button>
+      </div>
+      <div class="center">
+        <h5><u>Result :</u></h5>
+        <p id="rsa_decrypt_result">No result</p>
+      </div>
+
+      <script>
+        // ==========================================
+        // 1. (Helper Functions)
+        // ==========================================
+        function gcd(a, b) {
+          while (b !== 0) {
+            let t = b;
+            b = a % b;
+            a = t;
+          }
+          return a;
+        }
+
+        function isPrime(num) {
+          if (num < 2) return false;
+          for (let i = 2; i <= Math.sqrt(num); i++) {
+            if (num % i === 0) return false;
+          }
+          return true;
+        }
+
+        function modInverse(e, phi) {
+          let [old_r, r] = [BigInt(phi), BigInt(e)];
+          let [old_t, t] = [0n, 1n];
+          while (r !== 0n) {
+            let q = old_r / r;
+            [old_r, r] = [r, old_r - q * r];
+            [old_t, t] = [t, old_t - q * t];
+          }
+          if (old_t < 0n) old_t += BigInt(phi);
+          return old_t;
+        }
+
+        function modPow(base, exponent, modulus) {
+          let res = 1n;
+          base = BigInt(base) % BigInt(modulus);
+          exponent = BigInt(exponent);
+          let mod = BigInt(modulus);
+          while (exponent > 0n) {
+            if (exponent % 2n === 1n) res = (res * base) % mod;
+            base = (base * base) % mod;
+            exponent = exponent / 2n;
+          }
+          return res;
+        }
+
+        // ==========================================
+        // 2.  CAESAR & GENERAL SHIFT
+        // ==========================================
+        function Encrypt1() {
+          let text = document.getElementById("massage1").value.toUpperCase();
+          let result = "";
+          for (let i = 0; i < text.length; i++) {
+            let code = text.charCodeAt(i);
+            if (code >= 65 && code <= 90)
+              result += String.fromCharCode(((code - 65 + 3) % 26) + 65);
+            else result += text[i];
+          }
+          document.getElementById("result1").innerText = result;
+        }
+
+        function Decrypt1() {
+          let text = document.getElementById("massage1").value.toUpperCase();
+          let result = "";
+          for (let i = 0; i < text.length; i++) {
+            let code = text.charCodeAt(i);
+            if (code >= 65 && code <= 90)
+              result += String.fromCharCode(((code - 65 - 3 + 26) % 26) + 65);
+            else result += text[i];
+          }
+          document.getElementById("result1").innerText = result;
+        }
+
+        // ==========================================
+        // 3.  RSA
+        // ==========================================
+        function generateRSA() {
+          let p = parseInt(document.getElementById("p").value);
+          let q = parseInt(document.getElementById("q").value);
+          let eVal = parseInt(document.getElementById("e").value) || 65537;
+          if (!isPrime(p) || !isPrime(q)) {
+            alert("p and q must be prime!");
+            return;
+          }
+          let n = p * q;
+          let phi = (p - 1) * (q - 1);
+          if (gcd(eVal, phi) !== 1) {
+            alert("e is not coprime with phi!");
+            return;
+          }
+          let d = modInverse(eVal, phi);
+          document.getElementById("publicKey").innerText =
+            `Public Key: (n=${n}, e=${eVal})`;
+          document.getElementById("privateKey").innerText =
+            `Private Key: (n=${n}, d=${d})`;
+        }
+
+        function encryptRSADemo() {
+          let text = document
+            .getElementById("rsa_text_input")
+            .value.toUpperCase();
+          let p = parseInt(document.getElementById("rsa_p_enc").value);
+          let q = parseInt(document.getElementById("rsa_q_enc").value);
+          let e = parseInt(document.getElementById("rsa_e_enc").value) || 65537;
+
+          if (!text || !p || !q || !isPrime(p) || !isPrime(q)) {
+            alert("Fill Plain text and prime number p, q is correct!");
+            return;
+          }
+
+          // 1. calculator n and phi
+          let n = BigInt(p * q);
+          let phi = BigInt((p - 1) * (q - 1));
+          let eBI = BigInt(e);
+
+          // 2. find d (Private Key) use modInverse
+          if (gcd(e, Number(phi)) !== 1) {
+            alert("e must be coprime with φ(n)");
+            return;
+          }
+
+          // n must be > 26
+          if (n <= 26n) {
+            alert("Choose larger p and q so that n > 26");
+            return;
+          }
+
+          let d = modInverse(eBI, phi);
+
+          // 3. Encrypt pharagraph
+          let encrypted = [];
+          for (let i = 0; i < text.length; i++) {
+            let m = BigInt(text.charCodeAt(i) - 65);
+            encrypted.push(modPow(m, eBI, n).toString());
+          }
+
+          // 4. show result cipher text , d and n.
+          document.getElementById("rsa_encrypt_result").innerHTML = `
+        <b>Ciphertext:</b> <span style="color: blue;">${encrypted.join(" ")}</span><br><br>
+            <strong>Decrypt:</strong><br>
+            Private Key (d): <b style="color: red;">${d}</b><br>
+            Modulus (n): <b style="color: red;">${n}</b>
+        </div>
+        `;
+        }
+
+        function decryptRSADemo() {
+          let cipherText = document
+            .getElementById("rsa_cipher_input")
+            .value.trim();
+          let d = document.getElementById("rsa_d_dec").value;
+          let n = document.getElementById("rsa_n_dec").value;
+
+          if (!cipherText || !d || !n) {
+            alert("Fill Cipher text, d and n all!");
+            return;
+          }
+
+          let dBI = BigInt(d);
+          let nBI = BigInt(n);
+
+          let cipherArray = cipherText.split(/\s+/);
+          let decrypted = "";
+
+          try {
+            for (let val of cipherArray) {
+              if (val.trim() === "") continue;
+
+              let c = BigInt(val);
+
+              //  m = c^d mod n
+              let m = modPow(c, dBI, nBI);
+
+              // convert ASCII to characotor
+              decrypted += String.fromCharCode(Number(m) + 65);
+            }
+
+            document.getElementById("rsa_decrypt_result").innerHTML =
+              `Decrypted Text: <b style="color: green; font-size: 1.2em;">${decrypted}</b>`;
+          } catch (err) {
+            console.error(err);
+            document.getElementById("rsa_decrypt_result").innerText =
+              "Error: Field!";
+          }
+        }
+      </script>
+
+      <div class="a3">
+        <h1><u>III.Miscellaneous</u></h1>
+      </div>
+      <div class="line3"></div>
+      <p class="s1">
+        Check my repository for codes:<br />
+        <a href="https://github.com/Senghaks/DM.git">
+          https://github.com/Senghaks/DM.git
+        </a>
+      </p>
+    </div>
+  </body>
+</html>
