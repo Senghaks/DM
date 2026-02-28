@@ -24,6 +24,21 @@ body {
   display: flex;
   justify-content: center;
 }
+.title .fir {
+  width: 40ch;
+  font-size: 200%;
+  white-space: nowrap;
+  overflow: hidden;
+  animation: typing 3s steps(100) infinite alternate-reverse;
+}
+@keyframes typing {
+  from {
+    width: 0ch;
+  }
+  to {
+    width: 10;
+  }
+}
 .title {
   margin-top: 2%;
 }
