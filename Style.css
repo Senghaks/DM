@@ -43,7 +43,7 @@ body {
     width: 0;
   }
   to {
-    width: 61.8%;
+    width: 61%;
   }
 }
 
@@ -677,3 +677,4 @@ div .line3 {
   word-break: break-word;
   overflow-wrap: anywhere;
 }
+
