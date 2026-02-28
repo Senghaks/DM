@@ -16,6 +16,7 @@ body {
   display: block;
   justify-items: center;
   margin: 20px auto;
+  text-align: center;
 }
 .picture {
   margin-top: 20px;
@@ -25,18 +26,30 @@ body {
   justify-content: center;
 }
 .title .fir {
-  width: 40ch;
+  display: inline-block;
   font-size: 200%;
   white-space: nowrap;
   overflow: hidden;
-  animation: typing 3s steps(100) infinite alternate-reverse;
+  border-right: 3px solid black;
+  animation:
+    typing 5s steps(30) infinite alternate,
+    blink 0.7s infinite;
 }
+
 @keyframes typing {
   from {
-    width: 0ch;
+    text-align: center;
+    justify-content: center;
+    width: 0;
   }
   to {
-    width: 10;
+    width: 71%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
 }
 .title {
