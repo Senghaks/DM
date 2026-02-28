@@ -32,7 +32,7 @@ body {
   overflow: hidden;
   border-right: 3px solid black;
   animation:
-    typing 5s steps(30) infinite alternate,
+    typing 5s steps(100) infinite alternate,
     blink 0.7s infinite;
 }
 
@@ -43,13 +43,18 @@ body {
     width: 0;
   }
   to {
-    width: 71%;
+    width: 61.8%;
   }
 }
 
 @keyframes blink {
   50% {
     border-color: transparent;
+  }
+}
+@media (max-width: 900px) {
+  .title .fir {
+    font-size: 1.2rem;
   }
 }
 .title {
